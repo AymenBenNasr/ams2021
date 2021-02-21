@@ -1,6 +1,7 @@
 package com.sip.ams.service;
 import com.sip.ams.entities.Role;
 import com.sip.ams.entities.User;
+import com.sip.ams.entities.Users;
 import com.sip.ams.repositories.RoleRepository;
 import com.sip.ams.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public User findUserByEmail(String email) {
+    public Users findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    public void saveUser(User user) {
+    public void saveUser(Users user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         Role userRole = roleRepository.findByRole("USER");

@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sip.ams.entities.User;
+import com.sip.ams.entities.Users;
+import com.sip.ams.entities.Users;
 import com.sip.ams.repositories.UserRepository;
 
 import com.sip.ams.entities.Role;
@@ -46,7 +47,7 @@ public class AccountController {
 	@GetMapping("list")
     public String listUsers(Model model) {
     	
-    	List<User> users = (List<User>) userRepository.findAll();
+    	List<Users> users = (List<Users>) userRepository.findAll();
     	long nbr =  userRepository.count();
     	if(users.size()==0)
     		users = null;
@@ -63,7 +64,7 @@ public class AccountController {
     		@PathVariable ("email") String email) {
     	
 		 sendEmail(email, true);
-		 User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
+		 Users user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
 	     user.setActive(1);
 	     userRepository.save(user);
     	return "redirect:../../list";
@@ -76,7 +77,7 @@ public class AccountController {
     	
 		 sendEmail(email, false);
 		 
-		 User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
+		 Users user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
 	     user.setActive(0);
 	     userRepository.save(user);
     	return "redirect:../../list";
@@ -112,7 +113,7 @@ public class AccountController {
 			@RequestParam ("newrole")String newRole
 			) {
     	
-		 User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
+		 Users user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
 	     
 		 Role userRole = roleRepository.findByRole(newRole);
 		 

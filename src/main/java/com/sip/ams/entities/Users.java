@@ -6,9 +6,9 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 
-public class User {
+public class Users {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
