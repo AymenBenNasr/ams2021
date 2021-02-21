@@ -1,6 +1,5 @@
 package com.sip.ams.service;
 import com.sip.ams.entities.Role;
-import com.sip.ams.entities.User;
 import com.sip.ams.entities.Users;
 import com.sip.ams.repositories.RoleRepository;
 import com.sip.ams.repositories.UserRepository;
